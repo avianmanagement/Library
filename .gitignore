@@ -1,0 +1,6 @@
+*
+!.gitignore
+!my*.prg
+!psp*.prg
+!usein.prg
+!param_val.prg
