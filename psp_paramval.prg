@@ -2,37 +2,6 @@
 * Modified to handle objects
 *** 07/15/2002 08:21:08 PM
 
-#IF .F.
-TEXT
-********************************
-*   HELP BUILDER COMMENT BLOCK *
-********************************
-*:Help Documentation
-*:Name: 
-Param_Val
-*:Purpose:
-To obviate the need for IF..ENDIF testing of parameters
-FOR existence AND type
-*:Keywords:
-
-*:Parameters:
-
-*:Returns:
-
-*:Remarks:
-
-*:Example:
-LPARAMETERS tcAlias
-
-tcAlias = Param_Val(tcAlias,ALIAS())
-
-*:EndHelp
-ENDTEXT
-#ENDIF
-
-
-
-
 LPARAMETERS tuParamVal, tuDefaultVal, tlCanBeEmpty
 
 IF VARTYPE(tuParamVal,.T.) = VARTYPE(tuDefaultVal,.T.)
