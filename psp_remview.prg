@@ -24,7 +24,7 @@ select 0
 try
 	lnRet = sqlexec(lnHandle,tcSQL, tcAlias)
 catch to loError
-     is(loError)
+     
 endtry
 
 if lnRet # 1 or vartype(loError) = "O" or !used(tcAlias)
@@ -35,7 +35,5 @@ else
 	select (tcAlias)
 endif
 
-//=sqldisconnect(lnHandle)
-is("lnRet: " + trans(lnRet))
 return lnRet
 

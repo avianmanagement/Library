@@ -23,3 +23,5 @@ procedure fieldchoices
 	lcChoices = strextract(lcFieldInfo,",",",",8)
 	return strtran(lcChoices,chr(9),",")
 endproc
+
+*

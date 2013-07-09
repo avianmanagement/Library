@@ -1,5 +1,5 @@
 lParameter ttTimeStamp, tcUser, tcApp, tcMessage, tcErrnos, tcProgStack, tcMemor, tcStatus, tcDatabase
-
+? message(1)
 lcDataBase = psp_paramval(tcDatabase,database())
 if !tableexists(lcDatabase,"psp_errorlog")
 	create table &(lcDatabase)!psp_errorlog ( ;

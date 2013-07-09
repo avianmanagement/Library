@@ -3,3 +3,4 @@ local loObject
 
 loObject = lianja.get(tcUIObject)
 loObject.refresh()
+return .T.

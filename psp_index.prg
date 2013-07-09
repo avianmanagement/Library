@@ -20,6 +20,7 @@ if file(lcAlias + ".prg") or file(lcAlias + ".dbo")
 	catch to loError
 		is("Error in " + lcAlias + ".prg")
 		llOK = .F.
+		? json_encode(loError)
 	endtry
 	//set procedure to &lcSetProc
 else
