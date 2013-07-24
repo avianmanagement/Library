@@ -1,3 +1,18 @@
+/*
+To initialize (and also set vars):
+pap_dbini("myfirstconnstr,mysecondconnstr","connstr=whatever|user=whoever|pwd=whateveralso,connstr=...)
+
+Or, to create the file and fill that in, just use the first parameter:
+pap_dbini("myfirstconnstr,mysecondconnstr")
+You can even change what user and pwd are called for a particular odbc connection, as needed.
+
+To use (in iNIT of App):
+psp_dbini("myfirstconnstr,mysecondconnstr")
+
+*/
+
+//Todo: encryption
+
 lParameters tcDBConnStrList,tcDBConnStrValues
 local lcConnStr, lnConnStrParts, lcConnStrVar, lcUserVar, lcPwdVar, loIniSection, lclcIniFile, loSection
 local lcConnStrValuesParts, lcConnStrValue, lcUserValue, lcPwdValue
@@ -23,6 +38,8 @@ for lnConnStr = 1 to getwordcount(tcDBConnStrList,",")
 			loSection.user = ""
 			loSection.pwd = ""
 		else
+			*** needs work
+//Todo: fix this up
 			lcConnStrValuesParts = getwordnum(tcDBConnStrList,",")
 			lcConnStrValue = getwordnum(lcConnStrValues,1,"|")
 			lcUserValue = getwordnum(lcConnStrValues,2,"|")
@@ -35,9 +52,9 @@ for lnConnStr = 1 to getwordcount(tcDBConnStrList,",")
 		loIniSection = ini_getsection(lcConnStrVar,lcIniFile)
 	endif
 	
-	lcUserVar = getwordnum(lcConnStrParts,2,";")
-	lcPwdVar = getwordnum(lcConnStrParts,3,";")
-	
+	lcUserVar = psp_paramval(getwordnum(lcConnStrParts,2,";"),"user")
+	lcPwdVar = psp_paramval(getwordnum(lcConnStrParts,3,";"),"pwd")
+				
 	store loIniSection.connstr to &lcConnStrVar
 	store loIniSection.user to &lcUserVar
 	store loIniSection.pwd to &lcPwdVar
@@ -45,6 +62,18 @@ for lnConnStr = 1 to getwordcount(tcDBConnStrList,",")
 endfor
 
 
-
+/*
++This work is copyright(r) by Profesional Systems Plus, Inc. and released under 
++the Apache 2, MIT, or BSD open sources licenses, your choice.
++
++Your obligation is to note the copyright holder and the license you chose in 
++the software you distribute.
++
++Feel free to add or make changes as you wish: send a pull request and we'll take a look.
++
++enjoy,
++
++Hank Fay
+*/
 
 

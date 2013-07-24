@@ -6,7 +6,7 @@ if empty(tcStyle)
 endif
 
 lcPhoneNum = tcPhoneNum
-do while occurs("9",tcStyle) > lcPhoneNum
+do while occurs("9",tcStyle) > LEN(lcPhoneNum)
 	lcPhoneNum = substr(lcPhoneNum,2)
 enddo
 
@@ -21,14 +21,14 @@ procedure applymask
 	lcFormatted = ""
 	lnPhoneCol = 0
 	for lnCol = 1 to len(tcStyle)
-		lcColChar = substr(tcStyle,lnCol)
+		lcColChar = substr(tcStyle,lnCol, 1)
 		if lcColChar = "9"
 			lnPhoneCol = lnPhoneCol + 1
-			lcColVal = substr(tcPhoneNum,lnPhoneCol,lnPhoneCol)
+			lcColVal = substr(tcPhoneNum,lnPhoneCol,1)
 		else
 			lcColVal = lcColChar
 		endif
-		lcFormatted = lcFormatted + lcColChar
+		lcFormatted = lcFormatted + lcColVal
 	endfor
 	
 return lcFormatted
